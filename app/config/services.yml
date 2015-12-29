@@ -1,0 +1,8 @@
+services:
+
+    service.ssl:
+        class: AppBundle\Service\SSL
+
+    model.domain:
+        class: AppBundle\Model\DomainModel
+        arguments: [ "@service.ssl", "@doctrine.orm.entity_manager" ]

@@ -1,0 +1,67 @@
+{% extends '::base.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bower_components/ng-dialog/css/ngDialog.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bower_components/ng-dialog/css/ngDialog-theme-default.min.css') }}" />
+{% endblock %}
+
+{% block content %}
+    <section id="content" ng-controller="MainCtrl as main">
+        <div class="row">
+            <div class="col-md-8">
+
+                <h4>Add domain :</h4>
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">https://</span>
+                    <input ng-value="" ng-model="my.domain" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    <span class="input-group-btn">
+                        <button ng-click="add()" class="btn btn-default" type="button">
+                            Add service to check
+                        !</button>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:40px;">
+            <div class="col-md-12">
+
+                <h4>Checked domains :</h4>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>url</td>
+                            <td>authority</td>
+                            <td>date</td>
+                            <td>status</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="domain in domains | orderBy:'url':true">
+                            <td>{{ '{{ domain.id }}' }}</td>
+                            <td>{{ '{{ domain.url }}' }}</td>
+                            <td>{{ '{{ domain.issuer }}' }}</td>
+                            <td>{{ '{{ domain.date.date | limitTo:10 }}' }}</td>
+                            <td>{{ '{{ domain.status }}' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var add_domain  = '{{ path('domain_create') }}';
+        var list_domain = '{{ path('domain_list') }}';
+    </script>
+{% endblock %}

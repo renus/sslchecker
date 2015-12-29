@@ -1,0 +1,24 @@
+AppBundle\Entity\Domain:
+    type: entity
+    table: domain
+    repositoryClass: AppBundle\Repository\DomainRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        url:
+            type: string
+            length: 255
+            unique: true
+        issuer:
+            type: string
+            length: 255
+        date:
+            type: datetimetz
+        status:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
