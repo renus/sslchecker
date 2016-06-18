@@ -43,4 +43,20 @@ class DomainModel
 
         return $domain;
     }
+
+    /**
+     * @param Domain $domain
+     * @return Domain
+     */
+    public function check(Domain $domain)
+    {
+        $this->ssl->init($domain->getUrl());
+        $domain->setDate($this->ssl->getExiprationDate());
+        $domain->setIssuer($this->ssl->getIssuer('CN'));
+
+        $this->em->persist($domain);
+        $this->em->flush();
+
+        return $domain;
+    }
 }

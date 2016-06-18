@@ -1,4 +1,5 @@
 sslchecker
 ==========
 
-A Symfony project created on December 18, 2015, 12:01 pm.
+Web application "Angular + Symfony 3" to check, monitor and alert if the 
+ssl certificate of a domain expire  
