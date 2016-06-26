@@ -4,8 +4,7 @@
 /app/config/parameters.yml
 /var/logs/*
 !var/logs/.gitkeep
-git push -u origin masterphpunit.xml
-/bin/
+phpunit.xml
 /composer.phar
 /vendor/
 /web/bundles/
